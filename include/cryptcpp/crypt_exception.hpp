@@ -47,9 +47,21 @@ public:
   virtual ~crypt_exception() = default;
 };
 
+
+// =============================================================
+//@{
+// @brief Exception reporting mechanism. Throw if exceptions
+//        are enabled. Else call application provided
+//        report_exception function.
+//@}
+// =============================================================
+#ifdef __cpp_exceptions
 inline void report_exception(const crypt_exception &cryptexcep) {
   throw cryptexcep;
 }
+#else
+extern void report_exception(const crypt_exception &cryptexcep);
+#endif
 
 } // namespace cryptcpp
 #endif
