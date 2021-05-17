@@ -37,7 +37,7 @@ public:
   // @param key raw symmetric key.
   // @param key_len length of the key.
   //@}
-  virtual void set_key(const unsigned char *key, size_t keyLen) override;
+  virtual void set_key(const unsigned char *key, size_t keyLen) OVERRIDE;
 
   //@{
   // @brief Sets the cipher algorithm.
@@ -47,14 +47,14 @@ public:
   // @return true if successful.
   //@}
   virtual bool set_cipher(cipher_type _cipher_type,
-                          cipher_mode _cipher_mode) override;
+                          cipher_mode _cipher_mode) OVERRIDE;
 
   //@{
   // @brief Sets padding on or off.
   //
   // @param pad switch on or off.
   //@}
-  virtual void set_padding(bool pad) override { _M_padding = pad; }
+  virtual void set_padding(bool pad) OVERRIDE { _M_padding = pad; }
 
   //@{
   // @brief Decrypts an encrypted message with symmetric key using the
@@ -67,7 +67,7 @@ public:
   // @return decrypted message length.
   //@}
   virtual size_t decrypt(const unsigned char *in_buf, unsigned char *plain_buf,
-                         size_t in_len, size_t max_out_len) override;
+                         size_t in_len, size_t max_out_len) OVERRIDE;
 
   //@{
   // @brief Encrypts a message with symmetric key using the
@@ -82,7 +82,7 @@ public:
   //@}
   virtual size_t encrypt(const unsigned char *in_buf, unsigned char *cipher_buf,
                          size_t in_len, size_t max_out_len,
-                         const unsigned char *iv) override;
+                         const unsigned char *iv) OVERRIDE;
 
 private:
   //@{

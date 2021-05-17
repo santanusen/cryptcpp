@@ -44,7 +44,7 @@ public:
   // @exception throw if invalid or non-DSA key is passed.
   //@}
   virtual bool set_key(const char *file, key_type _key_type,
-                       const char *password, size_t pass_len) override;
+                       const char *password, size_t pass_len) OVERRIDE;
 
   //@{
   // @brief Digitally signs a digest with DSA private key.
@@ -57,7 +57,7 @@ public:
   // @exception throw on openssl library call error.
   //@}
   virtual size_t sign(const unsigned char *digest, size_t digest_len,
-                      unsigned char *sign_buf, size_t sign_buf_len) override;
+                      unsigned char *sign_buf, size_t sign_buf_len) OVERRIDE;
 
   //@{
   // @brief Verifies a digital signature against a digest
@@ -71,7 +71,7 @@ public:
   // @exception throw on openssl library call error.
   //@}
   virtual bool verify(const unsigned char *digest, size_t digest_len,
-                      const unsigned char *signature, size_t sign_len) override;
+                      const unsigned char *signature, size_t sign_len) OVERRIDE;
 
   //@{
   // @brief Set digest algorithm if valid.
@@ -80,7 +80,7 @@ public:
   // @return true if successful.
   // @exception throw on openssl library call error.
   //@}
-  virtual bool set_digest_algo(digest::digest_algorithm digest_algo) override;
+  virtual bool set_digest_algo(digest::digest_algorithm digest_algo) OVERRIDE;
 
 private:
   //@{

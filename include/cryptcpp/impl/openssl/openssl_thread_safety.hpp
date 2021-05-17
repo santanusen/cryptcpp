@@ -15,6 +15,8 @@
 #ifdef OPENSSL_THREADS
 #include <openssl/crypto.h>
 
+#include <cryptcpp/cryptcpp_cpp_std.hpp>
+
 namespace cryptcpp {
 
 //@{

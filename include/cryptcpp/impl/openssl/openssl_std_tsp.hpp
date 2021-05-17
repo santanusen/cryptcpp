@@ -6,10 +6,11 @@
 // in the file LICENSE in the source distribution.
 //
 
-#include <mutex>
-
 #ifndef __CRYPTCPP_OPENSSL_STD_THREAD_SAFETY_POLICY_HPP__
 #define __CRYPTCPP_OPENSSL_STD_THREAD_SAFETY_POLICY_HPP__
+
+#include <cryptcpp/cryptcpp_cpp_std.hpp>
+#include <mutex>
 
 namespace cryptcpp {
 
@@ -52,10 +53,10 @@ protected:
 private:
   // Non-copyable
   openssl_std_mutex_thread_safety_policy(
-      const openssl_std_mutex_thread_safety_policy &) = delete;
+      const openssl_std_mutex_thread_safety_policy &) DELETED;
 
   openssl_std_mutex_thread_safety_policy &
-  operator=(const openssl_std_mutex_thread_safety_policy &) = delete;
+  operator=(const openssl_std_mutex_thread_safety_policy &) DELETED;
 };
 
 } // namespace cryptcpp

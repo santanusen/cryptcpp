@@ -10,6 +10,7 @@
 #define __CRYPTCPP_DIGITAL_SIGNATURE_HPP__
 
 #include "asymmetric_key.hpp"
+#include "cryptcpp_cpp_std.hpp"
 #include "digest.hpp"
 
 namespace cryptcpp {
@@ -24,7 +25,7 @@ public:
   //@{
   // @brief Polymorphic base class.
   //@}
-  virtual ~digital_signature() = default;
+  virtual ~digital_signature() DFLTDSTR;
 
   //@{
   // @brief Digitally signs a digest with private key.

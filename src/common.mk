@@ -10,13 +10,12 @@ SRCDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 INCDIR := $(SRCDIR)../include
 CXXFLAGS := $(CXXFLAGS) \
 	-Wall -Wextra -Werror \
-	-Wmissing-include-dirs -Wlogical-op -Wshadow \
+	-Wmissing-include-dirs -Wshadow \
 	-Wmissing-declarations -Wunreachable-code -Wredundant-decls \
 	-Wcast-qual -Wcast-align -Wsign-promo \
-	-Woverloaded-virtual -Wctor-dtor-privacy -Wstrict-null-sentinel \
+	-Woverloaded-virtual -Wctor-dtor-privacy \
 	-Wstrict-overflow=5 -Wswitch-default -Wundef \
-	-Wnoexcept \
-	-pedantic-errors -fno-elide-constructors \
+	-fno-elide-constructors \
 	-g -fPIC -I $(INCDIR)
 LDFLAGS_SO := $(LDFLAGS) -shared
 

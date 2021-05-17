@@ -41,33 +41,33 @@ public:
   // @param codec_algo type of the codec algorithm.
   // @return pointer to the new concrete codec.
   //@}
-  virtual codec *create_codec(codec::codec_algorithm codec_algo) const override;
+  virtual codec *create_codec(codec::codec_algorithm codec_algo) const OVERRIDE;
 
   //@{
   // @brief creates a new concrete digital_signature.
   //
   // @return pointer to the new concrete signature verifier.
   //@}
-  virtual digital_signature *create_digital_signature() const override;
+  virtual digital_signature *create_digital_signature() const OVERRIDE;
 
   //@{
   // @brief Creates a new concrete digest calculator.
   //
   // @return pointer to the new concrete digest calculator.
   //@}
-  virtual digest *create_digest() const override;
+  virtual digest *create_digest() const OVERRIDE;
 
   //@{
   // @brief Creates a new concrete asymmetric key crypt.
   //
   // @return pointer to the new concrete asymmetric key crypt.
   //@}
-  virtual asymmetric_key_crypt *create_asymmetric_key_crypt() const override;
+  virtual asymmetric_key_crypt *create_asymmetric_key_crypt() const OVERRIDE;
 
   //@{
   // @brief Creates a new concrete symmetric key crypt.
   //@}
-  virtual symmetric_key_crypt *create_symmetric_key_crypt() const override;
+  virtual symmetric_key_crypt *create_symmetric_key_crypt() const OVERRIDE;
 
 private:
   //@{
@@ -78,12 +78,12 @@ private:
   //@{
   // @brief Non-copyable singleton.
   //@}
-  openssl_factory(const openssl_factory &) = delete;
+  openssl_factory(const openssl_factory &) DELETED;
 
   //@{
   // @brief Non-copyable singleton.
   //@}
-  const openssl_factory &operator=(const openssl_factory &) = delete;
+  const openssl_factory &operator=(const openssl_factory &) DELETED;
 };
 
 } // namespace cryptcpp

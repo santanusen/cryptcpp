@@ -43,7 +43,7 @@ public:
   // @exception throw if invalid keys are passed.
   //@}
   virtual bool set_key(const char *file, key_type _key_type,
-                       const char *password, size_t pass_len) override;
+                       const char *password, size_t pass_len) OVERRIDE;
 
   //@{
   // @brief Encrypts data with private key.
@@ -55,7 +55,7 @@ public:
   // @exception throw on openssl library call error.
   //@}
   virtual ssize_t private_encrypt(size_t msg_len, const unsigned char *msg,
-                                  unsigned char *enc_msg) override;
+                                  unsigned char *enc_msg) OVERRIDE;
 
   //@{
   // @brief Encrypts data with private key.
@@ -67,7 +67,7 @@ public:
   // @exception throw on openssl library call error.
   //@}
   virtual ssize_t public_encrypt(size_t msg_len, const unsigned char *msg,
-                                 unsigned char *enc_msg) override;
+                                 unsigned char *enc_msg) OVERRIDE;
 
   //@{
   // @brief Decrypts encrypted data using private key.
@@ -80,7 +80,7 @@ public:
   //@}
   virtual ssize_t private_decrypt(size_t enc_msg_len,
                                   const unsigned char *enc_msg,
-                                  unsigned char *dec_msg) override;
+                                  unsigned char *dec_msg) OVERRIDE;
 
   //@{
   // @brief Decrypts encrypted data using public key.
@@ -93,7 +93,7 @@ public:
   //@}
   virtual ssize_t public_decrypt(size_t enc_msg_len,
                                  const unsigned char *enc_msg,
-                                 unsigned char *dec_msg) override;
+                                 unsigned char *dec_msg) OVERRIDE;
 
 private:
   //@{

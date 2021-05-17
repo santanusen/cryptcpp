@@ -10,6 +10,7 @@
 #define __CRYPTCPP_ASYMMETRIC_KEY_CRYPT_HPP__
 
 #include "asymmetric_key.hpp"
+#include "cryptcpp_cpp_std.hpp"
 
 namespace cryptcpp {
 
@@ -24,7 +25,7 @@ public:
   //@{
   // @brief Polymorphic base class.
   //@}
-  virtual ~asymmetric_key_crypt() = default;
+  virtual ~asymmetric_key_crypt() DFLTDSTR;
 
   //@{
   // @brief Encrypts data with private key.

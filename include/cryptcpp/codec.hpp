@@ -9,6 +9,7 @@
 #ifndef __CRYPTCPP_CODEC_HPP__
 #define __CRYPTCPP_CODEC_HPP__
 
+#include "cryptcpp_cpp_std.hpp"
 #include <cstdlib>
 
 namespace cryptcpp {
@@ -83,7 +84,7 @@ public:
   //@{
   // @brief Polymorphic base class.
   //@}
-  virtual ~codec() = default;
+  virtual ~codec() DFLTDSTR;
 
 protected:
   //@{

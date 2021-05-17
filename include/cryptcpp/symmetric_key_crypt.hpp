@@ -9,11 +9,12 @@
 #ifndef __CRYPTCPP_SYMMETRIC_KEY_CRYPT_HPP__
 #define __CRYPTCPP_SYMMETRIC_KEY_CRYPT_HPP__
 
+#include "cryptcpp_cpp_std.hpp"
 #include <string>
 
 namespace cryptcpp {
 
-constexpr size_t MAX_SYMMETRIC_KEY_LENGTH = 64; // 512 bits
+const size_t MAX_SYMMETRIC_KEY_LENGTH = 64; // 512 bits
 
 //@{
 // @class symmetric_key_crypt
@@ -63,7 +64,7 @@ public:
   //@{
   // @brief Polymorphic base class.
   //@}
-  virtual ~symmetric_key_crypt() = default;
+  virtual ~symmetric_key_crypt() DFLTDSTR;
 
   //@{
   // @brief Sets the key for encryption/decryption.

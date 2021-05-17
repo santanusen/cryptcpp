@@ -41,7 +41,7 @@ public:
   //@}
   virtual size_t calculate_digest(const unsigned char *data, size_t data_len,
                                   unsigned char *digest_buf,
-                                  size_t digest_buf_len) override;
+                                  size_t digest_buf_len) OVERRIDE;
 
   //@{
   // @brief Sets the digest calculation algorithm to use.
@@ -49,7 +49,7 @@ public:
   // @return true if successful.
   // @throw on ssl library call error.
   //@}
-  virtual bool set_digest_algorithm(digest_algorithm digest_algo) override;
+  virtual bool set_digest_algorithm(digest_algorithm digest_algo) OVERRIDE;
 
 private:
   //@{

@@ -23,6 +23,8 @@ namespace cryptcpp_ui {
 struct pw_cb_data {
   const char *password;
   size_t pass_len;
+
+  pw_cb_data(const char *p, size_t l) : password(p), pass_len(l) {}
 };
 
 static int cryptcpp_ui_reader(UI *ui, UI_STRING *uis) {
@@ -65,6 +67,10 @@ static UI_METHOD *get_method() {
 
 } // namespace cryptcpp_ui
 
+static void cryptcpp_OSSL_STORE_close(OSSL_STORE_CTX *ctx) {
+  OSSL_STORE_close(ctx);
+}
+
 EVP_PKEY *openssl_key_util::read_key(const char *uri,
                                      asymmetric_key::key_type _key_type,
                                      const char *password, size_t pass_len) {
@@ -79,10 +85,10 @@ EVP_PKEY *openssl_key_util::read_key(const char *uri,
     return nullptr;
   }
 
-  cryptcpp_ui::pw_cb_data ui_data{password, pass_len};
+  cryptcpp_ui::pw_cb_data ui_data(password, pass_len);
   cryptcpp_unique_ptr<OSSL_STORE_CTX> ctx(
       OSSL_STORE_open(uri, ui_method.get(), &ui_data, nullptr, nullptr),
-      OSSL_STORE_close);
+      cryptcpp_OSSL_STORE_close);
   if (!ctx) {
     report_exception(openssl_exception("OSSL_STORE_open:"));
     return nullptr;

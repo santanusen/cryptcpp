@@ -9,6 +9,7 @@
 #ifndef __CRYPTCPP_DIGEST_HPP__
 #define __CRYPTCPP_DIGEST_HPP__
 
+#include "cryptcpp_cpp_std.hpp"
 #include <cstdlib>
 
 namespace cryptcpp {
@@ -25,21 +26,21 @@ public:
   // @brief Types of digest calculation algorithms.
   //@}
   typedef const char *digest_algorithm;
-  static inline const char *DIGEST_MD2() { return "MD2"; }
-  static inline const char *DIGEST_MD5() { return "MD5"; }
-  static inline const char *DIGEST_SHA() { return "SHA"; }
-  static inline const char *DIGEST_SHA1() { return "SHA1"; }
-  static inline const char *DIGEST_SHA224() { return "SHA224"; }
-  static inline const char *DIGEST_SHA256() { return "SHA256"; }
-  static inline const char *DIGEST_SHA384() { return "SHA384"; }
-  static inline const char *DIGEST_SHA512() { return "SHA512"; }
-  static inline const char *DIGEST_MDC2() { return "MDC2"; }
-  static inline const char *DIGEST_RIPEMD160() { return "RIPEMD160"; }
+  static inline digest_algorithm DIGEST_MD2() { return "MD2"; }
+  static inline digest_algorithm DIGEST_MD5() { return "MD5"; }
+  static inline digest_algorithm DIGEST_SHA() { return "SHA"; }
+  static inline digest_algorithm DIGEST_SHA1() { return "SHA1"; }
+  static inline digest_algorithm DIGEST_SHA224() { return "SHA224"; }
+  static inline digest_algorithm DIGEST_SHA256() { return "SHA256"; }
+  static inline digest_algorithm DIGEST_SHA384() { return "SHA384"; }
+  static inline digest_algorithm DIGEST_SHA512() { return "SHA512"; }
+  static inline digest_algorithm DIGEST_MDC2() { return "MDC2"; }
+  static inline digest_algorithm DIGEST_RIPEMD160() { return "RIPEMD160"; }
 
   //@{
   // Polymorphic base class.
   //@}
-  virtual ~digest() = default;
+  virtual ~digest() DFLTDSTR;
 
   //@{
   // @brief Calculates the digest of the given data.

@@ -36,7 +36,7 @@ public:
   // @param raw_len length of raw data.
   // @return maximum size of encoded data.
   //@}
-  size_t get_max_encoded_buf_len(size_t raw_len) const override;
+  size_t get_max_encoded_buf_len(size_t raw_len) const OVERRIDE;
 
   //@{
   // @brief Returns maximum size of decoded data for encoded data size.
@@ -44,7 +44,7 @@ public:
   // @param enc_len length of encoded data.
   // @return maximum size of decoded data.
   //@}
-  size_t get_max_decoded_buf_len(size_t enc_len) const override;
+  size_t get_max_decoded_buf_len(size_t enc_len) const OVERRIDE;
 
   //@{
   // @brief Performs encoding.
@@ -56,7 +56,7 @@ public:
   // @return length of encoded data, negative on error.
   //@}
   virtual ssize_t encode(const char *raw_buf, size_t raw_len, char *enc_buf,
-                         size_t enc_buf_len) override;
+                         size_t enc_buf_len) OVERRIDE;
 
   //@{
   // @brief Performs decoding.
@@ -68,7 +68,7 @@ public:
   // @return length of the decoded data, negative on error.
   //@}
   virtual ssize_t decode(const char *enc_buf, size_t enc_len, char *dec_buf,
-                         size_t dec_buf_len) override;
+                         size_t dec_buf_len) OVERRIDE;
 };
 
 } // namespace cryptcpp

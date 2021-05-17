@@ -11,6 +11,7 @@
 
 #include "asymmetric_key_crypt.hpp"
 #include "codec.hpp"
+#include "cryptcpp_cpp_std.hpp"
 #include "digest.hpp"
 #include "digital_signature.hpp"
 #include "symmetric_key_crypt.hpp"

@@ -9,6 +9,7 @@
 #ifndef __CRYPTCPP_ASYMMETRIC_KEY_HPP__
 #define __CRYPTCPP_ASYMMETRIC_KEY_HPP__
 
+#include "cryptcpp_cpp_std.hpp"
 #include <cstdlib>
 
 namespace cryptcpp {

@@ -9,6 +9,7 @@
 #ifndef __CRYPTCPP_SSL_EXCEPTION_HPP__
 #define __CRYPTCPP_SSL_EXCEPTION_HPP__
 
+#include "cryptcpp_cpp_std.hpp"
 #include <exception>
 #include <string>
 
@@ -37,16 +38,15 @@ public:
   // @brief Returns the error message associated with this exception.
   // @return the error message associated with this exception.
   //@}
-  const char *what() const noexcept override { return _M_err_msg.c_str(); }
+  const char *what() const NOEXCEPT OVERRIDE { return _M_err_msg.c_str(); }
 
   // =============================================================
   //@{
   // @brief Polymorphic base class.
   //@}
   // =============================================================
-  virtual ~crypt_exception() = default;
+  virtual ~crypt_exception() NOEXCEPT DFLTDSTR;
 };
-
 
 // =============================================================
 //@{
