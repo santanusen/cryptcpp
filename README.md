@@ -1,5 +1,5 @@
-Welcome to the CryptCpp Library
-===============================
+Welcome to the CryptCpp Library Project
+=======================================
 CryptCpp is a C++ Cryptographic interface library that decouples application code from specific cryptographic library calls.
 
 Overview
