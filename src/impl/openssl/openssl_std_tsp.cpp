@@ -6,6 +6,7 @@
 // in the file LICENSE in the source distribution.
 //
 
+#if __cplusplus > 201100L
 #include <cryptcpp/impl/openssl/openssl_std_tsp.hpp>
 
 namespace cryptcpp {
@@ -53,3 +54,4 @@ void openssl_std_mutex_thread_safety_policy::dynamic_lock_destroy(
 }
 
 } // namespace cryptcpp
+#endif // C++11

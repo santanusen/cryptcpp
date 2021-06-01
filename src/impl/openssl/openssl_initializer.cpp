@@ -7,7 +7,11 @@
 //
 
 #include <cryptcpp/impl/openssl/openssl_factory.hpp>
+#if __cplusplus < 201100L
+#include <cryptcpp/impl/openssl/openssl_posix_tsp.hpp>
+#else
 #include <cryptcpp/impl/openssl/openssl_std_tsp.hpp>
+#endif
 #include <cryptcpp/impl/openssl/openssl_thread_safety.hpp>
 
 #include <openssl/conf.h>
@@ -39,8 +43,13 @@ public:
 
 private:
 #ifdef OPENSSL_THREADS
+#if __cplusplus < 201100L
+  typedef openssl_thread_safety<openssl_posix_mutex_thread_safety_policy>
+      thread_safety_t;
+#else
   typedef openssl_thread_safety<openssl_std_mutex_thread_safety_policy>
       thread_safety_t;
+#endif
 
   thread_safety_t thread_safety;
 #endif

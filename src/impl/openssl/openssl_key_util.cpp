@@ -104,13 +104,16 @@ EVP_PKEY *openssl_key_util::read_key(const char *uri,
 
     const int type = OSSL_STORE_INFO_get_type(info.get());
     if (asymmetric_key::ASYM_KEY_PUBLIC == _key_type) {
+#ifdef OSSL_STORE_INFO_PUBKEY
       if (OSSL_STORE_INFO_PUBKEY == type) {
         if (EVP_PKEY *pkey = OSSL_STORE_INFO_get1_PUBKEY(info.get())) {
           return pkey;
         }
         report_exception(openssl_exception("OSSL_STORE_INFO_get1_PUBKEY:"));
         return nullptr;
-      } else if (OSSL_STORE_INFO_PUBKEY == type) {
+      }
+#endif
+      if (OSSL_STORE_INFO_PKEY == type) {
         /* Extract public key from private key info. */
         if (OSSL_STORE_INFO_get1_PKEY(info.get())) { // Privatet Key
           if (EVP_PKEY *pkey =
@@ -121,7 +124,7 @@ EVP_PKEY *openssl_key_util::read_key(const char *uri,
         report_exception(openssl_exception("OSSL_STORE_INFO_get1_PKEY:"));
         return nullptr;
       }
-    } else if (OSSL_STORE_INFO_PUBKEY == type) {
+    } else if (OSSL_STORE_INFO_PKEY == type) {
       if (EVP_PKEY *pkey = OSSL_STORE_INFO_get1_PKEY(info.get())) {
         return pkey;
       }

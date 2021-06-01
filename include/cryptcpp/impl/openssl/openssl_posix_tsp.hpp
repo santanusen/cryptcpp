@@ -6,20 +6,21 @@
 // in the file LICENSE in the source distribution.
 //
 
-#if __cplusplus > 201100L
-#ifndef __CRYPTCPP_OPENSSL_STD_THREAD_SAFETY_POLICY_HPP__
-#define __CRYPTCPP_OPENSSL_STD_THREAD_SAFETY_POLICY_HPP__
+#if __cplusplus < 201100L
+#ifndef __CRYPTCPP_OPENSSL_POSIX_THREAD_SAFETY_POLICY_HPP__
+#define __CRYPTCPP_OPENSSL_POSIX_THREAD_SAFETY_POLICY_HPP__
 
 #include <cryptcpp/cryptcpp_cpp_std.hpp>
-#include <mutex>
+#include <pthread.h>
 
 namespace cryptcpp {
 
 //@{
-// @class openssl_std_mutex_thread_safety_policy
-// @brief Implements locking policy for openssl thread safety using std::mutex
+// @class openssl_posix_mutex_thread_safety_policy
+// @brief Implements locking policy for openssl thread safety using
+// pthread_mutex_t
 // @}
-class openssl_std_mutex_thread_safety_policy {
+class openssl_posix_mutex_thread_safety_policy {
 
   // Only the host class needs to access the member functions.
 protected:
@@ -27,17 +28,19 @@ protected:
   // @brief opaque structure for OpenSSL dynamic locking callbacks.
   //@}
   struct CRYPTO_dynlock_value {
-    std::mutex _M_mutex;
+    pthread_mutex_t _M_mutex;
   };
 
   //@{
   // @brief Mutex buffer for openssl static locking callbacks.
   //@}
-  static std::mutex *_S_static_mutex_buf;
+  static pthread_mutex_t *_S_static_mutex_buf;
 
-  openssl_std_mutex_thread_safety_policy(int num_locks);
+  static int _S_static_mutex_buf_sz;
 
-  ~openssl_std_mutex_thread_safety_policy();
+  openssl_posix_mutex_thread_safety_policy(int num_locks);
+
+  ~openssl_posix_mutex_thread_safety_policy();
 
   static void lock(int num);
 
@@ -53,11 +56,11 @@ protected:
 
 private:
   // Non-copyable
-  openssl_std_mutex_thread_safety_policy(
-      const openssl_std_mutex_thread_safety_policy &) DELETED;
+  openssl_posix_mutex_thread_safety_policy(
+      const openssl_posix_mutex_thread_safety_policy &) DELETED;
 
-  openssl_std_mutex_thread_safety_policy &
-  operator=(const openssl_std_mutex_thread_safety_policy &) DELETED;
+  openssl_posix_mutex_thread_safety_policy &
+  operator=(const openssl_posix_mutex_thread_safety_policy &) DELETED;
 };
 
 } // namespace cryptcpp
